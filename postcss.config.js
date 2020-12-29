@@ -3,8 +3,8 @@
 // };
 module.exports = {
   plugins: [
-    require("postcss-easy-import"),
-    require("tailwindcss"),
-    require("autoprefixer")
+    "postcss-easy-import"
+    , "tailwindcss"
+    , "autoprefixer"
   ]
 };

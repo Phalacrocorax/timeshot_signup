@@ -46,3 +46,34 @@ now
 ## The idea behind the example
 
 This example shows the most basic idea behind Next. We have 2 pages: `pages/index.js` and `pages/about.js`. The former responds to `/` requests and the latter to `/about`. Using `next/link` you can add hyperlinks between them with universal routing capabilities. The `day` directory shows that you can have subdirectories.
+
+## Dependencies
+
+- postcss-easy-import 3.0.0
+- tailwind 1.7.5
+- autoprefixer 9.8.6
+- bit-bin 14.8.8
+
+## bitdev
+
+https://docs.bit.dev/docs/quick-start
+
+```bash
+npm install bit-bin -g
+bit init
+
+# ▶︎ bit add component
+bit add ./components/signup.js --id signup-supabase
+bit import bit.envs/compilers/babel --compiler
+# bit import bit.envs/testers/mocha --tester
+npx bit tag signup-supabase
+# [errordeal] npm install --save-dev @babel/plugin-transform-react-jsx
+
+# ▶︎ bit export component
+# bit create organization: timeshotapp, create collection: ts-admin
+npx bit export timeshotapp.ts-admin
+
+# Usage
+npx bit import timeshotapp.ts-admin/signup-supabase
+npm i @bit/timeshotapp.ts-admin.signup-supabase
+```
