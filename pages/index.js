@@ -1,7 +1,6 @@
 import React from "react";
 import Head from "next/head";
 import Nav from "../components/nav";
-// import GitHubLogoIcon from "../public/github-logo-icon.svg";
 // ReferenceError: globalThis is not defined
 import SignUp from "../components/signup";
 

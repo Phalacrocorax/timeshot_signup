@@ -1,6 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import GitHub from "./github";
+import Google from "./google"
 
 const SignUp = () => {
   const [sendbutton, setSendbutton] = useState("送信");
@@ -71,16 +73,17 @@ const SignUp = () => {
       <div className="container mx-auto px-4 my-4 py-1">
         <p className="text-center">
           <button
-            className="bg-blue-600 hover:bg-blue-700 duration-300 text-white shadow p-2 mx-1"
+            className="bg-blue-500 hover:bg-blue-700 duration-300 rounded-md text-white shadow p-2 mx-1"
             onClick={googleSignup}
           >
-            Signup with Google
+            <Google />
           </button>
           <button
-            className="bg-blue-600 hover:bg-blue-700 duration-300 text-white shadow p-2 mx-1"
+            className="duration-300 shadow p-2 mx-1 rounded-md border-2"
             onClick={githubSignup}
           >
-            Signup with Github
+            <GitHub />
+            {/* Signup with Github */}
           </button>
         </p>
         <form>
