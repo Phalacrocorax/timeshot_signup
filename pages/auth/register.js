@@ -1,10 +1,14 @@
 import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import GitHub from "./github";
-import Google from "./google"
+import GitHub from "components/github";
+import Google from "components/google"
+import Link from "next/link";
 
-const SignUp = () => {
+// layout for this page
+import Auth from "layouts/Auth.js";
+
+const Register = () => {
   const [sendbutton, setSendbutton] = useState("送信");
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -66,9 +70,9 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="w-full text-gray-900">
+    <div className="max-w-xl mx-auto text-gray-900">
       <h1 className="m-0 w-full pt-20 leading-tight text-5xl text-center font-bold">
-        会員登録
+        TimeShot 新規登録
       </h1>
       <div className="container mx-auto px-4 my-4 py-1">
         <p className="text-center">
@@ -86,7 +90,7 @@ const SignUp = () => {
             {/* Signup with Github */}
           </button>
         </p>
-        <form>
+        <form className="mt-5">
           <label className="text-gray-600 font-light">メールアドレス</label>
           <input
             value={email}
@@ -112,16 +116,19 @@ const SignUp = () => {
             className="w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
           />
           <button
-            className="bg-blue-600 hover:bg-blue-700 rounded duration-300 text-white shadow px-6 py-1"
+            className="w-full py-3 mt-6 font-medium bg-blue-600 hover:bg-blue-700 rounded duration-300 text-white shadow px-6 py-1"
             type="submit"
             onClick={subscribe}
           >
             {sendbutton}
           </button>
+          <Link href="/auth/login" class="flex justify-between inline-block mt-4 text-xs text-gray-500 cursor-pointer hover:text-black">登録済のユーザさんはこちら</Link>
         </form>
       </div>
     </div>
   );
 };
 
-export default SignUp;
+Register.layout = Auth;
+
+export default Register;
