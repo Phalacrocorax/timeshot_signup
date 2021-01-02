@@ -1,3 +1,4 @@
+import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
@@ -12,10 +13,27 @@ const Login = () => {
 
   const login = async (e) => {
     e.preventDefault();
-    router.push({
-      pathname: "/admin/dashboard",
-      query: { email: email }
-    });
+
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY;
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    let { user, error } = await supabase.auth.signIn({
+      email: email,
+      password: password
+    })
+    
+    if (error) {
+      alert(error);
+      console.log(error);
+      setSendbutton("送信");
+      return false;
+    }else{
+      router.push({
+        pathname: "/admin/dashboard",
+        query: { email: email }
+      });
+    }
   };
   return (
     <div className="w-full text-gray-900">

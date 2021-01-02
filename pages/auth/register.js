@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import GitHub from "components/github";
 import Google from "components/google"
 import Link from "next/link";
-
 // layout for this page
 import Auth from "layouts/Auth.js";
 
@@ -64,7 +63,7 @@ const Register = () => {
     } else {
       // account N/A
       router.push({
-        pathname: "/confirm",
+        pathname: "/auth/confirm",
         query: { email: email }
       });
     }
